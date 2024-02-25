@@ -1,4 +1,4 @@
-@import "~bootstap/dist/css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 :root {
   --primary-color: #012169;
