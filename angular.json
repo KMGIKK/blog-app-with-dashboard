@@ -63,6 +63,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "blog-dashboard:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "blog-dashboard:build:production"
