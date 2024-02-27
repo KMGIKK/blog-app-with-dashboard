@@ -2,28 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { __values } from 'tslib';
 import { CategoriesService } from '../services/categories.service';
 import { Category } from '../models/category';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-categories',
-  //standalone: true,
-  //imports: [],
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnInit {
+  categoryArray: Array<any> = [];
+
   constructor(private categoryService: CategoriesService) {}
+
   ngOnInit(): void {
     this.categoryService.loadData().subscribe((val) => {
       console.log(val);
+
+      this.categoryArray = val;
     });
   }
 
-  onSubmit(formData: any) {
+  onSubmit(formData: NgForm) {
     let categoryData: Category = {
       category: formData.value.category,
     };
 
     this.categoryService.saveData(categoryData);
+
+    formData.reset();
 
     // let subCategoryData = {
     //   subCategory: 'subCategory1',

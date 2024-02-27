@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
 
@@ -9,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class CategoriesService {
   constructor(private afs: AngularFirestore, private toastr: ToastrService) {}
 
-  saveData(data: any) {
+  saveData(data: object) {
     this.afs
       .collection('categories')
       .add(data)
