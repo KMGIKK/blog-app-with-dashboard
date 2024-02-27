@@ -49,4 +49,14 @@ export class CategoriesService {
         this.toastr.success('Data Updated successfully..!');
       });
   }
+
+  deleteData(id: string) {
+    this.afs
+      .collection('categories')
+      .doc(id)
+      .delete()
+      .then((docref) => {
+        this.toastr.success('Data deleted..!');
+      });
+  }
 }
