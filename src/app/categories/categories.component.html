@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 bg-secondary-theme p-5 shadow-effect">
-      <h3 class="text-center text-theme-primary">New Categories</h3>
-      <p class="text-center mb-5">You can add new categories from here ..!</p>
+      <h3 class="text-center text-theme-primary">
+        {{ formStatus }} Categories
+      </h3>
+      <p class="text-center mb-5">
+        You can add {{ formStatus }} categories from here ..!
+      </p>
 
       <!-- form ek design krmu -->
       <form
@@ -17,7 +21,7 @@
             class="form-control shadow-effect"
             placeholder="Add New categories "
             #newCategory="ngModel"
-            ngModel
+            [(ngModel)]="formCategory"
             required
             [ngClass]="{
               'is-invalid': newCategory.touched && newCategory.invalid
@@ -37,7 +41,7 @@
             class="btn btn-block btn-info mb-2 btn-theme"
             [disabled]="categoryForm.invalid"
           >
-            Add Category
+            {{ formStatus }} Category
           </button>
         </div>
       </form>
@@ -65,7 +69,14 @@
                 <td>{{ category.data.category }}</td>
                 <!-- <td>{{ category.data.category }}</td> -->
                 <!-- <td>{{ category }}</td> -->
-                <td></td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-warning"
+                    (click)="onEdit(category.data.category, category.id)"
+                  >
+                    Edit
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>

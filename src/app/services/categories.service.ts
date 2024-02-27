@@ -39,4 +39,14 @@ export class CategoriesService {
         })
       );
   }
+
+  updateData(id: string, EditData: any) {
+    this.afs
+      .collection('categories')
+      .doc(id)
+      .update(EditData)
+      .then((docRef) => {
+        this.toastr.success('Data Updated successfully..!');
+      });
+  }
 }

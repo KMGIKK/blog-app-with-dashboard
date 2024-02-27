@@ -11,6 +11,9 @@ import { NgForm } from '@angular/forms';
 })
 export class CategoriesComponent implements OnInit {
   categoryArray: Array<any> = [];
+  formCategory: String = '';
+  formStatus: string = 'Add';
+  categoryId: any = '';
 
   constructor(private categoryService: CategoriesService) {}
 
@@ -27,9 +30,15 @@ export class CategoriesComponent implements OnInit {
       category: formData.value.category,
     };
 
-    this.categoryService.saveData(categoryData);
+    if (this.formStatus == 'Add') {
+      this.categoryService.saveData(categoryData);
 
-    formData.reset();
+      formData.reset();
+    } else if (this.formStatus == 'Edit') {
+      this.categoryService.updateData(this.categoryId, categoryData);
+      formData.reset();
+      this.formStatus = 'Add';
+    }
 
     // let subCategoryData = {
     //   subCategory: 'subCategory1',
@@ -69,5 +78,11 @@ export class CategoriesComponent implements OnInit {
     //   .catch((err) => {
     //     console.log(err);
     //   });
+  }
+
+  onEdit(category: any, id: any) {
+    this.formCategory = category;
+    this.formStatus = 'Edit';
+    this.categoryId = id;
   }
 }
