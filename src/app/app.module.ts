@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
@@ -44,6 +45,7 @@ import { AllPostComponent } from './posts/all-post/all-post.component';
     AngularEditorModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
